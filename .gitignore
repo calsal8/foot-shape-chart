@@ -3,7 +3,6 @@ node_modules
 npm-debug.log
 *~
 *.pyc
-.grunt
 _SpecRunner.html
 __benchmarks__
 build/
@@ -19,7 +18,6 @@ chrome-user-data
 *.sublime-workspace
 .idea
 *.iml
-.vscode
 *.swp
 *.swo
 dist
