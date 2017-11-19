@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import SimpleChart from './components/BarChart'
 
 export default class App extends Component {
   constructor(props) {
@@ -23,44 +24,35 @@ export default class App extends Component {
     const responseJson = await response.json();
     const data = responseJson.data[0];
     const sizes = data.sizes;
-    const gender = data.gender;
-    const system = data.system;
-    const nextPage = responseJson['next-page'];
     const allShapes = [];
 
     const sizeList = Object.keys(sizes).reduce((arr, size) => {
       const sizeObj = Object.keys(sizes[size]).reduce((obj, shapeName) => {
         obj.size = size;
         obj.shapes.push({ name: shapeName, value: sizes[size][shapeName] });
+        obj[shapeName] = sizes[size][shapeName];
+        allShapes.indexOf(shapeName) === -1 ? allShapes.push(shapeName) : null;
         obj.total += sizes[size][shapeName];
         return obj;
       }, { shapes: [], total: 0 });
       arr.push(sizeObj);
       return arr;
     }, []);
-    console.log(sizeList);
-    return { system, gender, sizeList, allShapes, nextPage };
-  }
-
-  renderSizeChart() {
-    return this.state.data.sizeList.map((size, key) => {
-      return <li key={key}>{size.size} - Total: {size.total}</li>;
-    });
+    return { system: data.system, gender: data.gender, sizeList, allShapes: allShapes, nextPage: responseJson['next-page'] };
   }
 
   render() {
     if (this.state.data != null) {
       return (<div>
         <div>Gender: {this.state.data.gender}</div>
-        <div>Size system: {this.state.data.system}</div>
+        <div>System: {this.state.data.system}</div>
         <div>NP: {this.state.data.nextPage}</div>
-        <ul>{this.renderSizeChart()}</ul>
+        <SimpleChart data={this.state.data}/>
       </div>);
     } else {
       return (
-        <h1>Hello, world without data</h1>
+        <h1>Loading</h1>
       );
     }
-
   }
 }
