@@ -44,7 +44,7 @@ export default class App extends Component {
           }, { shapes: [], total: 0 });
           arr.push(sizeObj);
           return arr;
-        }, []);
+        }, []).sort((a, b) => a.size - b.size);
 
         return { system: data.system, gender: data.gender, sizeList, allShapes: allShapes, nextPage: responseJson['next-page'], status: response.status };
       } else {
