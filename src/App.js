@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
-import SimpleChart from './components/BarChart'
+import SimpleChart from './components/SimpleChart'
 
 export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = { data: null };
+    this.fetchSizes = this.fetchSizes.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   async componentWillMount() {

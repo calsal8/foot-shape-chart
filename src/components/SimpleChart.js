@@ -8,8 +8,8 @@ export default class SimpleChart extends Component {
 
   render () {
     return (
-      <BarChart width={1200} height={600} data={this.props.data.sizeList} stackOffset="sign"
-                margin={{top: 5, right: 30, left: 20, bottom: 5}}>
+      <BarChart width={window.innerWidth-40} height={600} data={this.props.data.sizeList} stackOffset="sign"
+                margin={{top: 5, right: 20, left: 20, bottom: 5}}>
         <XAxis dataKey="size"/>
         <YAxis dataKey="total"/>
         <CartesianGrid strokeDasharray="3 3"/>
