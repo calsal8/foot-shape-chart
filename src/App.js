@@ -17,7 +17,8 @@ export default class App extends Component {
   async fetchSizes(fetch, page = null) {
     const username = 'admin';
     const password = 'ToPsEcReT';
-    const url = 'http://homeexercise.volumental.com/sizingsample';
+    let url = 'http://homeexercise.volumental.com/sizingsample';
+    page ? url += '?page=' + page : null;
     const headers = new Headers();
     const decodedCredentials = window.btoa(`${username}:${password}`);
     headers.append('Authorization', `Basic ${decodedCredentials}`);
@@ -50,6 +51,7 @@ export default class App extends Component {
         <div>System: {this.state.data.system}</div>
         <div>NP: {this.state.data.nextPage}</div>
         <SimpleChart data={this.state.data}/>
+        <button onClick={this.handleClick}>Next page</button>
       </div>);
     } else {
       return (
