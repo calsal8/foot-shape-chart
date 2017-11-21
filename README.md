@@ -28,4 +28,7 @@ open http://localhost:3000 in browser
 
 ### More to ask for
 This project doesn't use the latest versions of React, webpack or the webpack loaders. Before using this in a production environment, all frameworks and webpack configuration should be updated accordingly.
- 
+
+Styling is not prefixed to work with all browsers. To guarantee correct styling, use latest version of Chrome Browser.
+
+Responsive design and breakpoints are not implemented in the application, though it looks okay on smaller devices too.  
