@@ -2,7 +2,17 @@
 @import "./variables";
 @import "./mixins";
 @import "./spinner";
+@import "./swing";
+@import "./chart";
 
+*, *:after, *:before {
+  box-sizing: border-box;
+}
+
+::selection {
+  color: $color-bg;
+  background-color: rgba($color-base, .9);
+}
 
 body {
   font-family: 'Lato', Helvetica, serif;
@@ -12,11 +22,30 @@ body {
 }
 
 .headline {
+  margin: 1em;
   font-size: 1.5em;
   font-weight: 600;
   letter-spacing: .1em;
   text-align: center;
   text-transform: uppercase;
+}
+
+.bold {
+  font-weight: 600;
+}
+
+.fa {
+  transition: font-size .3s;
+  transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.5);
+
+  &--hidden {
+    font-size: 0;
+
+    .btn--center:hover & {
+      margin-left: .5em;
+      font-size: 1em;
+    }
+  }
 }
 
 .btn {
@@ -29,6 +58,15 @@ body {
 
   &--center {
     margin: .5em auto;
+  }
+}
+
+.flip-it {
+  padding: 0 1em;
+  transition: transform .3s;
+
+  &:hover {
+    transform: scaleX(-1);
   }
 }
 

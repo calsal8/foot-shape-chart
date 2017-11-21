@@ -27,7 +27,7 @@ export default class App extends Component {
     try {
       const response = await fetch(url, { method: 'GET', headers: headers });
 
-      if (response.status === 200) {
+      if (response && response.status === 200) {
         const responseJson = await response.json();
         const data = responseJson.data[0];
         const sizes = data.sizes;
@@ -56,6 +56,7 @@ export default class App extends Component {
   }
 
   async handleClick() {
+    this.setState({ data: null });
     const response = await this.fetchSizes(window.fetch, this.state.data.nextPage);
     this.setState({ data: response });
   }
@@ -68,21 +69,16 @@ export default class App extends Component {
     if (this.state.data !== null) {
       if (this.state.data.status === 200) {
         return (<div>
-          <div>Gender: {this.state.data.gender}</div>
-          <div>System: {this.state.data.system}</div>
-          <div>NP: {this.state.data.nextPage}</div>
           <SimpleChart data={this.state.data}/>
-          <button onClick={this.handleClick}>Next page</button>
+          <button className='btn btn--center' onClick={this.handleClick}>Next page <i className="fa fa--hidden fa-paper-plane-o" aria-hidden="true"></i></button>
         </div>);
       } else if (this.state.data.status === 503) {
-        return (<div><h1>Service is unavailable at the moment ({this.state.data.status})</h1><p>Try to reload the page and try again</p><button onClick={this.reloadPage}>Reload now!</button></div>)
+        return (<div><h2>Service is unavailable at the moment ({this.state.data.status})</h2><p>Try to reload the page and try again</p><button onClick={this.reloadPage} className='btn btn--center'>Reload now!<i className="fa fa--hidden fa-refresh" aria-hidden="true"></i></button></div>)
       } else {
-        return (<div><h1>Something went wrong with the request</h1><p>Try to reload the page and try again</p><button onClick={this.reloadPage}>Reload now!</button></div>)
+        return (<div><h2>Something went wrong with the request</h2><p>Try again or contact admin</p><button onClick={this.reloadPage} className='btn btn--center'>Reload now!<i className="fa fa--hidden fa-refresh" aria-hidden="true"></i></button></div>)
       }
     } else {
-      return (
-        <h1>Loading...</h1>
-      );
+      return (<div className='spinner'></div>);
     }
   }
 }

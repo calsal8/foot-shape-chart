@@ -1,0 +1,26 @@
+.chart {
+  position: relative;
+
+  &__gender {
+    position: absolute;
+    right: 5%;
+    top: 5%;
+    font-size: 3em;
+    z-index: 1;
+
+    &:hover {
+      -webkit-transform-origin: 50% 0;
+      transform-origin: 50% 0;
+      -webkit-animation: swinging 1s ease-in-out backwards infinite;
+      animation: swinging 1s ease-in-out backwards infinite;
+    }
+  }
+
+  &__system {
+    position: absolute;
+    left: 10%;
+    top: 5%;
+    font-size: 2em;
+    z-index: 1;
+  }
+}

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ReferenceLine } from 'recharts';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
 
 export default class SimpleChart extends Component {
   renderShapesBars() {
@@ -8,15 +8,18 @@ export default class SimpleChart extends Component {
 
   render () {
     return (
-      <BarChart width={window.innerWidth-40} height={600} data={this.props.data.sizeList} stackOffset="sign">
-        <XAxis dataKey="size"/>
-        <YAxis dataKey="total"/>
-        <CartesianGrid strokeDasharray="3 3"/>
-        <Tooltip/>
-        <Legend />
-        <ReferenceLine y={0} stroke='#555'/>
-        {this.renderShapesBars()}
-      </BarChart>
+      <div className='chart'>
+        {this.props.data.gender.toLowerCase() === 'women' ? <i className="chart__gender swing fa fa-venus" title={this.props.data.gender} aria-hidden='true'></i> : <i className="chart__gender swing fa fa-mars" title={this.props.data.gender} aria-hidden='true'></i>}
+        <div className='chart__system'>System: <span className='bold'>{this.props.data.system}</span></div>
+        <BarChart width={window.innerWidth-40} height={600} data={this.props.data.sizeList} stackOffset="sign">
+          <XAxis dataKey="size"/>
+          <YAxis dataKey="total"/>
+          <CartesianGrid strokeDasharray="3 3"/>
+          <Tooltip/>
+          <Legend />
+          {this.renderShapesBars()}
+        </BarChart>
+      </div>
     );
   }
 }
