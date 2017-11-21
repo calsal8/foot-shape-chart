@@ -6,7 +6,8 @@ module.exports = {
   entry: [
     'babel-polyfill',
     'webpack-hot-middleware/client',
-    './src/index'
+    './src/index',
+    './src/scss/main.scss'
   ],
   output: {
     path: path.join(__dirname, 'dist'),
@@ -21,6 +22,12 @@ module.exports = {
       test: /\.js$/,
       loaders: ['react-hot', 'babel'],
       include: path.join(__dirname, 'src')
-    }]
+    },
+    {
+      test: /\.scss$/,
+      loaders: ['style-loader', 'css-loader', 'sass-loader'],
+      include: path.join(__dirname, 'src')
+    }
+    ]
   }
 };

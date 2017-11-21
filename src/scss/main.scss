@@ -1,0 +1,34 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:300,600');
+@import "./variables";
+@import "./mixins";
+@import "./spinner";
+
+
+body {
+  font-family: 'Lato', Helvetica, serif;
+  font-weight: 300;
+  font-size: 20px;
+  background: $color-bg;
+}
+
+.headline {
+  font-size: 1.5em;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.btn {
+  @include btn-style();
+  font-size: 1.5em;
+
+  &--plain {
+    @include btn-no-style();
+  }
+
+  &--center {
+    margin: .5em auto;
+  }
+}
+
