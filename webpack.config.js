@@ -6,8 +6,7 @@ module.exports = {
   entry: [
     'babel-polyfill',
     'webpack-hot-middleware/client',
-    './src/index',
-    './src/scss/main.scss'
+    './src/index'
   ],
   output: {
     path: path.join(__dirname, 'dist'),
@@ -25,7 +24,10 @@ module.exports = {
     },
     {
       test: /\.scss$/,
-      loaders: ['style-loader', 'css-loader', 'sass-loader'],
+      loaders: ['style-loader', 'css-loader?sourceMap', 'sass-loader?sourceMap'],
+      options: {
+        sourceMap: true
+      },
       include: path.join(__dirname, 'src')
     }
     ]

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import SimpleChart from './components/SimpleChart'
+import {} from './scss/main.scss';
 
 export default class App extends Component {
   constructor(props) {
