@@ -15,7 +15,7 @@
   "homepage": "https://github.com/calsal/foot-shape-chart",
   "devDependencies": {
     "babel-core": "^6.26.0",
-    "babel-eslint": "^4.1.3",
+    "babel-eslint": "^10.1.0",
     "babel-loader": "^6.4.1",
     "babel-polyfill": "^6.26.0",
     "babel-preset-es2015": "^6.24.1",
